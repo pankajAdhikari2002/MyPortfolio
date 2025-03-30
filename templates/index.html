@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Header Section -->
+<header id="header" class="header-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1>Hi, I'm <span class="text-primary">Pankaj Adhikari</span></h1>
+                <div class="typing-container">
+                    <span class="typed-text"></span>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/pankajAdhikari2002" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pankaj-adhikari-0b492a224/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://x.com/natusluto" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/duefortomorrow/" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="header-cta mt-4">
+                    <a href="#projects" class="btn btn-primary btn-lg">
+                        <i class="fas fa-code me-2"></i>View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-outline-primary btn-lg ms-3">
+                        <i class="fas fa-envelope me-2"></i>Get In Touch
+                    </a>
+                    <a href="{{ profile.resume_url if profile and profile.resume_url else '#' }}" class="btn btn-outline-primary btn-lg ms-3" target="_blank">
+                        <i class="fas fa-download me-2"></i>Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="about-image-container">
+                    <img src="{{ profile.image_url if profile else '/static/images/profile.jpg' }}" alt="Pankaj Adhikari" class="about-image">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-text">
+                    {{ profile.about_text if profile else 'I am a passionate software developer with expertise in web development and machine learning. I love creating innovative solutions and learning new technologies.' }}
+                </div>
+                <h3 class="skills-title">Skills</h3>
+                <ul class="skills-list">
+                    <li><i class="fas fa-code"></i> Python, JavaScript, HTML, CSS</li>
+                    <li><i class="fas fa-database"></i> Supabase, MongoDB, PostgreSQL</li>
+                    <li><i class="fas fa-server"></i> Node.js, Flask, FastAPI</li>
+                    <li><i class="fas fa-cloud"></i> AWS, Docker</li>
+                    <li><i class="fas fa-globe"></i> TCP/IP, DNS, Firewalls</li>
+                    <li><i class="fas fa-tools"></i> Git, GitHub</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section">
+    <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="{{ project.image_url }}" alt="{{ project.title }}">
+                    </div>
+                    <div class="project-content">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <div class="project-tech">
+                            {% for tech in project.technologies %}
+                            <span>{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="project-links">
+                            <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-primary">
+                                <i class="fab fa-github me-2"></i>GitHub
+                            </a>
+                            <a href="{{ project.live_url }}" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-card">
+                    <form action="{{ url_for('contact') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="footer-links">
+                    <h4 class="footer-subtitle">Quick Links</h4>
+                    <ul class="footer-menu">
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="footer-content">
+                    <h3 class="footer-title">Pankaj Adhikari</h3>
+                    <p class="footer-description">A passionate software developer focused on creating innovative solutions and learning new technologies.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/pankajAdhikari2002" target="_blank" class="footer-social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/pankaj-adhikari-0b492a224/" target="_blank" class="footer-social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/natusluto" target="_blank" class="footer-social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/duefortomorrow/" target="_blank" class="footer-social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="footer-contact">
+                    <h4 class="footer-subtitle">Contact Info</h4>
+                    <ul class="footer-contact-info">
+                        <li><i class="fas fa-envelope"></i> pankajadhikari75@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal, India</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pankaj Adhikari. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+{% endblock %} 
