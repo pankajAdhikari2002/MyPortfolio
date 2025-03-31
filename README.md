@@ -1,41 +1,60 @@
 # Portfolio Website
 
-A modern, responsive portfolio website built with Flask and Supabase. This website allows you to showcase your projects, manage your profile, and handle contact messages through an admin dashboard.
+A modern, responsive portfolio website built with Flask and Bootstrap 5. Features a clean design, smooth animations, and a comprehensive admin dashboard.
 
 ## Features
 
-- 🎨 Modern and responsive design
-- 📱 Mobile-friendly interface
-- 🔒 Secure admin dashboard
-- 📝 Project management system
-- 👤 Profile management
-- 📄 Resume upload functionality
-- 📧 Contact form with message management
-- 🖼️ Image upload for projects and profile
-- 🔍 SEO optimized
+### Main Website
+- Modern and responsive design
+- Smooth scroll animations
+- Dynamic navigation with scroll spy
+- Beautiful hover effects
+- Mobile-friendly layout
+- Sections for:
+  - Hero/Introduction
+  - About Me
+  - Skills
+  - Projects
+  - Contact
+- Custom favicon support
+- Error page handling
 
-## Tech Stack
+### Admin Dashboard
+- Secure login system
+- Project management
+- Skills management
+- About section management
+- Responsive sidebar navigation
+- Clean and intuitive interface
 
-- **Backend**: Flask (Python)
-- **Database**: Supabase
-- **Authentication**: Flask-Login
-- **Frontend**: HTML5, CSS3, JavaScript
-- **CSS Framework**: Bootstrap 5
-- **Icons**: Font Awesome
-- **Deployment**: Gunicorn
+## Recent Updates
 
-## Prerequisites
+### Navigation Improvements
+- Added scroll spy functionality to highlight active sections
+- Enhanced navbar title with hover effects and animations
+- Improved spacing between navigation items
+- Added smooth transitions for hover and active states
 
-- Python 3.8 or higher
-- Supabase account
-- Git
+### Visual Enhancements
+- Added custom favicon support
+- Improved error page layout and styling
+- Enhanced setup page design with gradient background
+- Better form styling and input focus states
+- Consistent spacing and alignment throughout
+
+### Admin Dashboard Updates
+- Improved sidebar navigation
+- Better card and table layouts
+- Enhanced form styling
+- Responsive design improvements
+- Better visual hierarchy
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/pankajAdhikari2002/MyPortfolio.git
-cd MyPortfolio
+git clone https://github.com/yourusername/portfolio-website.git
+cd portfolio-website
 ```
 
 2. Create and activate a virtual environment:
@@ -49,85 +68,74 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Create a `.env` file in the root directory with the following variables:
-```env
-FLASK_ENV=development
-SECRET_KEY=your-secret-key
-SUPABASE_URL=your-supabase-url
-SUPABASE_KEY=your-supabase-key
+4. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
 ```
 
-5. Set up the database:
-   - Create a new project in Supabase
-   - Create the following tables:
-     - users
-     - projects
-     - messages
-     - profile
+5. Initialize the database:
+```bash
+flask db upgrade
+```
 
-## Directory Structure
+6. Run the development server:
+```bash
+flask run
+```
+
+## Project Structure
 
 ```
 portfolio-website/
 ├── static/
 │   ├── css/
+│   │   └── style.css
 │   ├── js/
-│   ├── uploads/
-│   └── resume/
+│   │   └── scroll-spy.js
+│   └── favicon/
+│       ├── favicon-16x16.png
+│       ├── favicon-32x32.png
+│       ├── apple-touch-icon.png
+│       ├── android-chrome-192x192.png
+│       ├── android-chrome-512x512.png
+│       └── site.webmanifest
 ├── templates/
-│   ├── admin/
-│   └── index.html
-├── app.py
-├── models.py
+│   ├── base.html
+│   ├── index.html
+│   ├── error.html
+│   └── admin/
+│       ├── base.html
+│       ├── login.html
+│       ├── setup.html
+│       ├── dashboard.html
+│       ├── projects.html
+│       └── skills.html
+├── app/
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes.py
+│   └── admin/
+│       ├── __init__.py
+│       └── routes.py
+├── migrations/
+├── .env
+├── .env.example
+├── config.py
 ├── requirements.txt
-└── .env
+└── run.py
 ```
 
-## Usage
+## Technologies Used
 
-1. Run the development server:
-```bash
-python app.py
-```
-
-2. Access the website at `http://localhost:5000`
-
-3. Set up the admin account:
-   - Visit `http://localhost:5000/admin/setup`
-   - Create your admin account
-   - Log in to the admin dashboard
-
-## Admin Dashboard Features
-
-- Project Management
-  - Add, edit, and delete projects
-  - Upload project images
-  - Manage project details and links
-
-- Profile Management
-  - Update about text
-  - Change profile picture
-  - Upload/update resume
-
-- Message Management
-  - View contact form submissions
-  - Delete messages
-
-## Production Deployment
-
-1. Set environment variables for production:
-```env
-FLASK_ENV=production
-SECRET_KEY=your-secure-secret-key
-SUPABASE_URL=your-supabase-url
-SUPABASE_KEY=your-supabase-key
-PORT=5000
-```
-
-2. Run with Gunicorn:
-```bash
-gunicorn app:app
-```
+- Python 3.8+
+- Flask
+- SQLAlchemy
+- Flask-Login
+- Flask-Migrate
+- Bootstrap 5
+- Font Awesome
+- Google Fonts
 
 ## Contributing
 
@@ -139,9 +147,10 @@ gunicorn app:app
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-Pankaj Adhikari - pankajadhikari75@gmail.com
-Project Link: https://github.com/pankajAdhikari2002/MyPortfolio 
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
+
+Project Link: [https://github.com/yourusername/portfolio-website](https://github.com/yourusername/portfolio-website) 
