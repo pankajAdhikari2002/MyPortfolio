@@ -296,6 +296,7 @@ def admin_profile():
     profile = get_profile()
     return render_template('admin/profile.html', profile=profile)
 
+
 @app.route('/admin/setup', methods=['GET', 'POST'])
 def setup_admin():
     if request.method == 'POST':
