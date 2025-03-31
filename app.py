@@ -297,27 +297,27 @@ def admin_profile():
     return render_template('admin/profile.html', profile=profile)
 
 
-@app.route('/admin/setup', methods=['GET', 'POST'])
-def setup_admin():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+# @app.route('/admin/setup', methods=['GET', 'POST'])
+# def setup_admin():
+#     if request.method == 'POST':
+#         email = request.form.get('email')
+#         password = request.form.get('password')
         
-        # Check if user already exists
-        existing_user = get_user_by_email(email)
-        if existing_user:
-            flash('Admin user already exists', 'warning')
-            return redirect(url_for('login'))
+#         # Check if user already exists
+#         existing_user = get_user_by_email(email)
+#         if existing_user:
+#             flash('Admin user already exists', 'warning')
+#             return redirect(url_for('login'))
         
-        # Create new admin user
-        user = create_user(email, password)
-        if user:
-            flash('Admin user created successfully', 'success')
-            return redirect(url_for('login'))
-        else:
-            flash('Failed to create admin user', 'danger')
+#         # Create new admin user
+#         user = create_user(email, password)
+#         if user:
+#             flash('Admin user created successfully', 'success')
+#             return redirect(url_for('login'))
+#         else:
+#             flash('Failed to create admin user', 'danger')
     
-    return render_template('admin/setup.html')
+#     return render_template('admin/setup.html')
 
 # Main routes
 @app.route('/')
