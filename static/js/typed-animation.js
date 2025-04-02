@@ -1,7 +1,7 @@
 function initTyped() {
     try {
         const typed = new Typed('.typed-text', {
-            strings: ['Web Developer', 'Cybersecurity Enthusiast', 'No Snakes Only Python', 'Crypto Follower'],
+            strings: ['Web Developer', 'Cybersecurity Enthusiast', 'Python Fanatic', 'Crypto Follower'],
             typeSpeed: 40,
             backSpeed: 25,
             backDelay: 1500,
